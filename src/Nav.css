@@ -1,0 +1,24 @@
+.side-nav {
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: 0.3s;
+  border-right: 1px solid grey;
+  background-color: rgb(196, 196, 196);
+}
+.side-nav a {
+  padding: 10px 10px 10px 30px;
+  text-decoration: none;
+  color: rgb(37, 37, 37);
+  display: block;
+  transition: 0.3s;
+}
+
+.side-nav a:hover {
+  color: rgb(238, 238, 238);
+}

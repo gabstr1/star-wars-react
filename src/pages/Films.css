@@ -1,0 +1,8 @@
+.films-container {
+  overflow: auto;
+  white-space: nowrap;
+  height: 30%;
+}
+.table-content {
+  margin: 30px 0;
+}
