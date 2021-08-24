@@ -1,26 +1,26 @@
-// import "./App.css";
+import React, { useState, useEffect, FC } from "react";
+
 import "./Films.css";
-import Card from "../Films/Card";
-import PeopleTable from "../Films/PeopleTable";
-import { useEffect } from "react";
+import Card from "../../components/Card/Card";
+import PeopleTable from "../../components/PeopleTable/PeopleTable";
+import { FilmDataModel } from "../../utils/models";
+import { API_FILM_URL } from "../../utils/constants";
 
-import React, { useState } from "react";
 
-const Films = () => {
+const Films:FC = () => {
   const [films, setFilms] = useState([]);
-  const [urls, setCharacterUrls] = useState([]);
-  const [filmTitle, setFilmTitle] = useState([]);
-  const [showTable, setTableVisibility] = useState(false);
+  const [urls, setCharacterUrls] = useState<string[]>([]);
+  const [filmTitle, setFilmTitle] = useState('');
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("https://swapi.dev/api/films");
+      const response = await fetch(API_FILM_URL);
       if (!response.ok) {
         const message = `An error has occured: ${response.status}`;
         throw new Error(message);
       }
       const data = await response.json();
-      const transformedFilms = data.results.map((filmData) => {
+      const transformedFilms = data.results.map((filmData: FilmDataModel) => {
         return {
           id: filmData.episode_id,
           title: filmData.title,
@@ -33,22 +33,10 @@ const Films = () => {
     fetchData();
   }, []);
 
-  let peopleTableContent = (
-    <p className="table-content">
-      Press <i>Show people</i> button to see people.
-    </p>
-  );
-
-  const showPeopleHandler = async (urls, filmTitle) => {
-    setTableVisibility(false);
+  const showPeopleHandler = async (urls: string[], filmTitle: string) => {
     setCharacterUrls(urls);
     setFilmTitle(filmTitle);
-    setTableVisibility(true);
   };
-
-  if (showTable) {
-    peopleTableContent = <PeopleTable filmTitle={filmTitle} urls={urls} />;
-  }
 
   return (
     <div className="main-container">
@@ -61,7 +49,15 @@ const Films = () => {
           />
         ))}
       </div>
-      <div>{peopleTableContent}</div>
+      <div>
+        {urls.length > 0 ? (
+          <PeopleTable filmTitle={filmTitle} urls={urls} />
+        ) : (
+          <p className="table-content">
+            Press <i>Show people</i> button to see people.
+          </p>
+        )}
+      </div>
     </div>
   );
 };

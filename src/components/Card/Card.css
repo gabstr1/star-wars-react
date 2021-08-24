@@ -3,7 +3,7 @@
   transition: 0.3s;
   margin: 20px;
   padding: 20px;
-  border: 1px solid white;
+  border: 1px solid #ffffff;
   display: inline-block;
   width: 500px;
   height: 150px;
@@ -17,26 +17,25 @@
 .film-details {
   display: inline-block;
   position: relative;
-  color: #344055;
   width: 70%;
 }
 .film-details h3 {
   margin: 0 0 15px;
 }
 .episode-id {
-  background-color: rgb(180, 167, 167);
-  height: 50px;
-  width: 50px;
-  padding: 20px;
+  background-color: var(--grey-2);
+  height: 60px;
+  width: 60px;
+  padding: 25px;
   text-align: center;
-  line-height: 50px;
+  line-height: 60px;
 }
 .film-details p:nth-of-type(1) {
-  color: grey;
+  color: var(--grey-3);
   font-size: 14px;
   padding: 0 0 50px;
 }
-.button1 {
+.button {
   display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid #000000;
@@ -50,11 +49,33 @@
   text-align: center;
   cursor: pointer;
 }
-.button1:hover {
+.button:hover {
   color: #000000;
-  background-color: rgba(199, 199, 199, 0.5);
+  background-color: var(--grey-2);
 }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 600px) {
+  .card {
+    width: 250px;
+    height: 130px;
+  }
+  .film-details {
+    width: 85%;
+  }
+  .film-details h3 {
+    font-size: 16px;
+  }
+  .film-details p:nth-of-type(1) {
+    font-size: 12px;
+    padding: 0 0 40px;
+  }
+  .episode-id {
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+  }
 }

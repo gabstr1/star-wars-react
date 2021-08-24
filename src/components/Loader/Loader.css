@@ -22,7 +22,7 @@
 .loader .bar {
   position: relative;
   height: 5px;
-  background-color: #9b9b9b;
+  background-color: var(--grey-2);
   animation-name: loader-animation;
   animation-duration: 3s;
   animation-iteration-count: infinite;
